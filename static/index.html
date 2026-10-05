@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanooni Jawab — Legal Research</title>
+  <script>
+    (function () {
+      var t = localStorage.getItem("kanooni-jawab-theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="app-layout">
+  <header class="header glass-panel glass-panel--sm">
+    <div class="logo">
+      <span class="logo-icon">⚖</span>
+      <span class="logo-text">Kanooni Jawab</span>
+    </div>
+    <div class="header-actions">
+      <div class="header-meta" id="header-meta"></div>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="chat-shell glass-panel" id="chat-shell">
+    <div class="chat-column" id="chat-column">
+    <div class="welcome" id="welcome">
+      <h1>Legal research, grounded in your jurisdiction</h1>
+      <p>Ask about case law, legislation, or legal scenarios. Answers are retrieved from your corpus and cited with sources.</p>
+      <div class="suggestions">
+        <button type="button" class="suggestion" data-q="What is the standard of proof in custody cases?">Custody standard of proof</button>
+        <button type="button" class="suggestion" data-q="Explain the burden of proof in civil proceedings">Burden of proof in civil cases</button>
+        <button type="button" class="suggestion" data-q="What factors do courts consider for child custody arrangements?">Child custody factors</button>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <div class="input-wrapper">
+    <form class="input-bar glass-panel glass-panel--sm" id="chat-form">
+      <button type="button" class="icon-btn" id="new-chat-btn" title="New chat" aria-label="New chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <input
+        type="text"
+        id="query-input"
+        placeholder="Ask Kanooni Jawab..."
+        autocomplete="off"
+        disabled
+      />
+      <select id="jurisdiction-select" aria-label="Jurisdiction" disabled>
+        <option value="Canada" selected>Canada</option>
+        <option value="Hong Kong">Hong Kong</option>
+        <option value="Pakistan">Pakistan</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="United States">United States</option>
+        <option value="Australia">Australia</option>
+        <option value="India">India</option>
+      </select>
+      <button type="submit" class="send-btn" id="send-btn" disabled aria-label="Send">
+        <svg class="send-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </form>
+    <p class="disclaimer">Kanooni Jawab retrieves from your legal corpus. Verify citations before relying on answers.</p>
+  </div>
+  </div>
+
+  <div class="boot-overlay" id="boot-overlay">
+    <div class="boot-card glass-panel">
+      <div class="orb-loader orb-loader-lg"></div>
+      <p class="boot-title">Initializing Kanooni Jawab</p>
+      <p class="boot-sub" id="boot-status">Loading models and connecting to Qdrant...</p>
+    </div>
+  </div>
+
+  <div class="pdf-viewer-overlay hidden" id="pdf-viewer-overlay" aria-hidden="true">
+    <div class="pdf-viewer-panel glass-panel">
+      <div class="pdf-viewer-header">
+        <h2 class="pdf-viewer-title" id="pdf-viewer-title">Source document</h2>
+        <button type="button" class="pdf-viewer-close" id="pdf-viewer-close" aria-label="Close PDF viewer">&times;</button>
+      </div>
+      <div class="pdf-viewer-body" id="pdf-viewer-body">
+        <div class="pdf-pages" id="pdf-pages"></div>
+      </div>
+      <p class="pdf-viewer-status" id="pdf-viewer-status"></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    }
+  </script>
+  <script src="/app.js"></script>
+</body>
+</html>

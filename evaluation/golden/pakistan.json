@@ -1,0 +1,20 @@
+{
+  "jurisdiction": "Pakistan",
+  "description": "Starter golden set for Pakistan legal corpus",
+  "items": [
+    {
+      "id": "pk-general-001",
+      "query": "What is the standard of proof in civil proceedings in Pakistan?",
+      "expected_docs": [],
+      "must_cite": false,
+      "tags": ["general", "scenario"]
+    },
+    {
+      "id": "pk-custody-001",
+      "query": "What factors do courts consider when deciding child custody in Pakistan?",
+      "expected_docs": [],
+      "must_cite": false,
+      "tags": ["scenario", "family"]
+    }
+  ]
+}

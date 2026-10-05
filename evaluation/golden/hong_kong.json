@@ -1,0 +1,30 @@
+{
+  "jurisdiction": "Hong Kong",
+  "description": "Starter golden set for Hong Kong legislation and cases",
+  "items": [
+    {
+      "id": "hk-legis-weapons-001",
+      "query": "Under the Weapons Ordinance, when can the Commissioner order delivery or seizure of martial arts weapons?",
+      "doc_type": "Legislation",
+      "expected_docs": ["Weapons Ordinance"],
+      "must_cite": true,
+      "tags": ["legislation", "scenario"]
+    },
+    {
+      "id": "hk-legis-cap-001",
+      "query": "What is Cap 4 in Hong Kong law?",
+      "doc_type": "Legislation",
+      "expected_docs": ["Cap 4"],
+      "must_cite": false,
+      "tags": ["legislation", "metadata"]
+    },
+    {
+      "id": "hk-legis-water-001",
+      "query": "What offences exist under the Water Pollution Control Ordinance?",
+      "doc_type": "Legislation",
+      "expected_docs": ["Water Pollution Control Ordinance"],
+      "must_cite": true,
+      "tags": ["legislation"]
+    }
+  ]
+}
